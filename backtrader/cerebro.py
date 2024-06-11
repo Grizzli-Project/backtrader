@@ -822,6 +822,9 @@ class Cerebro(with_metaclass(MetaParams, object)):
         if any(dataname is x for x in self.datas):
             dataname = dataname.clone()
 
+        dataname.params.compression = kwargs['compression']
+        dataname.params.timeframe = kwargs['timeframe']
+
         dataname.replay(**kwargs)
         self.adddata(dataname, name=name)
         self._doreplay = True
